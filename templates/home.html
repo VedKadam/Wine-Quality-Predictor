@@ -1,0 +1,75 @@
+<html>
+<head>
+<title> Wine Quality Predictor </title>
+<link rel="icon" type="image/png" href="/templates/wine.png">
+
+<style>
+	*{font-size: 20px;}
+	body{background: linear-gradient(to bottom, #9796f0, #fbc7d4);}
+	#btn{background: pink; border-radius: 10px; width: 10%; padding: 1%; cursor: pointer;}
+	#btn:hover{ background-color: #b041ff; color: white; transition: background-color 0.3s ease; cursor: pointer;}
+	input[type=number]{
+		width: 25%;
+		padding: 0.5%;
+	}
+	h1{ font-size: 200%;}
+	#ans{ font-size: 30px;}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+	function check(){
+	let fc = document.getElementById("fc");
+	if (fc.value === "" || vc.value=="" || ca.value=="" || rs.value == "" || c.value=="" || fs.value == "" || ts.value=="" || den.value=="" || ph.value=="" || s.value=="" || alc.value == ""){
+		alert("empty fields");
+		ans.innerHTML = "";
+		fc.focus();
+		return false;
+	}
+	else if ((parseFloat(fc.value) < 0 ) || (parseFloat(vc.value) < 0) || (parseFloat(ca.value) < 0) || (parseFloat(rs.value) < 0) || (parseFloat(c.value) < 0) || (parseFloat(fs.value) < 0) || (parseFloat(ts.value) < 0) || (parseFloat(den.value) < 0) || (parseFloat(ph.value) < 0) || (parseFloat(s.value) < 0) || (parseFloat(alc.value) < 0))
+	{
+		alert("min value shud be 1 ");
+		ans.innerHTML = "";
+		fc.focus();
+		return false;
+	}
+	else{
+		return true;
+	}
+	}
+</script>
+</head>
+
+<body>
+<center>
+	<h1> Wine Quality Predictor</h1>
+	<form method="POST" onsubmit="return check()" >
+	<input type="number" step="any" name="fc" placeholder="Enter Acidity" id="fc" />
+	
+	<input type="number" step="any" name="vc" placeholder="Enter Volatile Acidity" id="vc" />
+	<br/>	<br/>
+	<input type="number" step="any" name="ca" placeholder="Enter amount of Citric Acid"  autocomplete="off" id="ca"/>
+	
+	<input type="number" step="any" name="rs" placeholder="Enter amount of Residual Sulphur" autocomplete="off" id="rs"/>
+	<br/>	<br/>
+	<input type="number" step="any" name="c" placeholder="Enter amount of Chlorides" autocomplete="off" id="c" />
+	
+	<input type="number" step="any" name="fs" placeholder="Enter amount of Free Sulphur Dioxide" autocomplete="off" id="fs"/>
+	<br/>	<br/>
+	<input type="number" step="any" name="ts" placeholder="Enter amount of Tolt SUlfur Dioxide" autocomplete="off" id="ts" />
+	
+	<input type="number" step="any" name="den" placeholder="Enter amount of Density" autocomplete="off" id="den" />
+	<br/>	<br/>
+	<input type="number" step="any" name="ph" placeholder="Enter amount of ph" autocomplete="off" id="ph" />
+	
+	<input type="number" step="any" name="s" placeholder="Enter amount of Sulphates" autocomplete="off" id="s" />
+	<br/>	<br/>
+	<input type="number" step="any" name="alc" placeholder="Enter percentage of Alcohol" autocomplete="off" id="alc" />
+	<br/>	<br/>
+	<input type="submit" value="Predict" id="btn" />
+	<br/>
+	</form>
+	<h2 id="ans"> {{ msg }} </h2>
+	<br/>
+</center>
+</body>
+</html>
